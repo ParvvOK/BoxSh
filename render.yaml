@@ -4,8 +4,8 @@ services:
     name: boxsh-backend
     env: node
     plan: free
-    buildCommand: cd apps/backend && npm install && npm run build
-    startCommand: cd apps/backend && npm start
+    buildCommand: npm install -g pnpm && pnpm install && pnpm run build
+    startCommand: cd apps/backend && node dist/index.js
     envVars:
       - key: NODE_ENV
         value: production
@@ -18,7 +18,7 @@ services:
     name: boxsh-frontend
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm install -g pnpm && pnpm install && pnpm run build
     startCommand: cd apps/frontend && npm start
     envVars:
       - key: NODE_ENV
