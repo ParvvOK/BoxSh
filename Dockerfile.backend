@@ -1,0 +1,27 @@
+# Backend Dockerfile for Render
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
+
+# Install pnpm
+RUN npm install -g pnpm
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Copy source code
+COPY . .
+
+# Build the backend
+RUN cd apps/backend && pnpm run build
+
+# Expose port
+EXPOSE 10000
+
+# Start the backend
+CMD ["node", "apps/backend/dist/index.js"]

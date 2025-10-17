@@ -1,26 +1,38 @@
 {
-  "name": "@repo/ui",
-  "version": "0.0.0",
+  "name": "@boxsh/ui",
+  "version": "0.1.0",
   "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
-    "./*": "./src/*.tsx"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*",
+      "default": "./dist/*"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "build": "tsc -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
-    "eslint": "^9.34.0",
-    "typescript": "5.9.2"
-  },
-  "dependencies": {
+    "typescript": "^5.9.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   }
 }
+

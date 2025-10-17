@@ -1,0 +1,17 @@
+@import "tailwindcss";
+.remote-cursor {
+  border-left: 2px solid rgba(96, 165, 250, 0.9);
+}
+.remote-cursor-bar {
+  border-left: 2px solid rgba(96, 165, 250, 0.9);
+}
+.remote-caret-label {
+  color: #0b1220;
+  border: 1px solid transparent;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 18px;
+  transform: translateY(-22px);
+  white-space: nowrap;
+}

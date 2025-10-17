@@ -1,0 +1,27 @@
+services:
+  # Backend WebSocket Service
+  - type: web
+    name: boxsh-backend
+    env: node
+    plan: free
+    buildCommand: cd apps/backend && npm install && npm run build
+    startCommand: cd apps/backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /
+    
+  # Frontend Static Site
+  - type: web
+    name: boxsh-frontend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: cd apps/frontend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_WS_URL
+        value: wss://boxsh-backend.onrender.com
