@@ -18,7 +18,7 @@ services:
     name: boxsh-frontend
     env: node
     plan: free
-    buildCommand: npm install -g pnpm && pnpm install --frozen-lockfile && cd apps/frontend && pnpm run build
+    buildCommand: npm install -g pnpm && rm -rf node_modules && pnpm install --frozen-lockfile && cd apps/frontend && pnpm run build
     startCommand: cd apps/frontend && pnpm start
     envVars:
       - key: NODE_ENV
